@@ -8,13 +8,13 @@ import java.util.List;
 public class People<E extends Person> implements Iterable<E>{
     private List<E> personList = new ArrayList<E>();
 
-    public void add(Person person){
-        personList.add((E) person);
+    public void add(E person){
+        personList.add( person);
     }
 
-    public Person findById(Long id){
-        Person result = null;
-        for(Person p : personList){
+    public E findById(Long id){
+        E result = null;
+        for(E p : personList){
             if(p.getId().equals(id)){
                 result = p;
             }
@@ -22,11 +22,11 @@ public class People<E extends Person> implements Iterable<E>{
         return result;
     }
 
-    public boolean contains(Person person){
+    public boolean contains(E person){
         return personList.contains((E) person);
     }
 
-    public void remove(Person person) {
+    public void remove(E person) {
         if (personList.contains((E)person)) {
             personList.remove((E)person);
         }
@@ -39,7 +39,7 @@ public class People<E extends Person> implements Iterable<E>{
     }
 
     public void removeAll(){
-        for(Person p : personList){
+        for(E p : personList){
             personList.remove(p);
         }
     }
@@ -47,8 +47,8 @@ public class People<E extends Person> implements Iterable<E>{
         return personList.size();
     }
 
-    public Person[] toArray(){
-      return (Person[]) personList.toArray();
+    public E[] toArray(){
+      return (E[]) personList.toArray();
     }
 
     @Override
